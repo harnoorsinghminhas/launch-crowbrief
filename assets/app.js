@@ -83,9 +83,7 @@ $$("[data-dlg]").forEach(function (b) {
     openDlg();
   });
 });
-$("#dlg-pay").addEventListener("click", function () {
-  $("#dlg-status").textContent = "Preview build: Stripe's hosted checkout connects here (test mode first). No payment was taken.";
-});
+$("#dlg-pay").addEventListener("click", function () { /* pay-wired */ var u = lastBtn && lastBtn.getAttribute("data-pay-url"); if (!u) { $("#dlg-status").textContent = "Checkout is not open yet. Please try again shortly."; return; } $("#dlg-status").textContent = "Opening secure checkout..."; window.location.assign(u); });
 $("#dlg-close").addEventListener("click", closeDlg);
 dlg.addEventListener("close", function () { if (lastBtn) lastBtn.focus(); });
 })();
